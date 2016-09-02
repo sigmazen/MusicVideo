@@ -74,6 +74,40 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AB1F84921D7A3EBF00141870 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		AB1F84931D7A3ED300141870 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				ABF7B40F1D7A365F00B40906 /* ViewController.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		AB1F84941D7A3EDE00141870 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				ABF7B4111D7A365F00B40906 /* Main.storyboard */,
+				ABF7B4161D7A365F00B40906 /* LaunchScreen.storyboard */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		AB1F84951D7A3EED00141870 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				ABF7B4191D7A365F00B40906 /* Info.plist */,
+				ABF7B4141D7A365F00B40906 /* Assets.xcassets */,
+				ABF7B40D1D7A365F00B40906 /* AppDelegate.swift */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		ABF7B4011D7A365F00B40906 = {
 			isa = PBXGroup;
 			children = (
@@ -97,12 +131,10 @@
 		ABF7B40C1D7A365F00B40906 /* MusicVideo */ = {
 			isa = PBXGroup;
 			children = (
-				ABF7B40D1D7A365F00B40906 /* AppDelegate.swift */,
-				ABF7B40F1D7A365F00B40906 /* ViewController.swift */,
-				ABF7B4111D7A365F00B40906 /* Main.storyboard */,
-				ABF7B4141D7A365F00B40906 /* Assets.xcassets */,
-				ABF7B4161D7A365F00B40906 /* LaunchScreen.storyboard */,
-				ABF7B4191D7A365F00B40906 /* Info.plist */,
+				AB1F84921D7A3EBF00141870 /* Model */,
+				AB1F84941D7A3EDE00141870 /* View */,
+				AB1F84931D7A3ED300141870 /* Controller */,
+				AB1F84951D7A3EED00141870 /* Supporting Files */,
 			);
 			path = MusicVideo;
 			sourceTree = "<group>";
@@ -193,6 +225,11 @@
 				TargetAttributes = {
 					ABF7B4091D7A365F00B40906 = {
 						CreatedOnToolsVersion = 7.2.1;
+						SystemCapabilities = {
+							com.apple.Maps.iOS = {
+								enabled = 0;
+							};
+						};
 					};
 					ABF7B41D1D7A365F00B40906 = {
 						CreatedOnToolsVersion = 7.2.1;
@@ -484,6 +521,7 @@
 				ABF7B4341D7A365F00B40906 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		ABF7B4351D7A365F00B40906 /* Build configuration list for PBXNativeTarget "MusicVideoTests" */ = {
 			isa = XCConfigurationList;
@@ -492,6 +530,7 @@
 				ABF7B4371D7A365F00B40906 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		ABF7B4381D7A365F00B40906 /* Build configuration list for PBXNativeTarget "MusicVideoUITests" */ = {
 			isa = XCConfigurationList;
@@ -500,6 +539,7 @@
 				ABF7B43A1D7A365F00B40906 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
