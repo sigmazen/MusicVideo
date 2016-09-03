@@ -6,6 +6,8 @@
 //  Copyright © 2016 Simon R Mableson. All rights reserved.
 //
 
+//  Github collaboration: Setting : Marsoftek
+
 import UIKit
 
 class ViewController: UIViewController {
