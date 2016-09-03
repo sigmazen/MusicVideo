@@ -37,7 +37,7 @@ class APIManager {
                     */
                     if let json = try NSJSONSerialization.JSONObjectWithData(data!,
                         options: .AllowFragments)
-                        as? [String: AnyObject] {
+                        as? JSONDictionary {
 
                             print(json)
                             
