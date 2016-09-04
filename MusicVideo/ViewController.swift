@@ -19,12 +19,14 @@ class ViewController: UIViewController {
 
         //Call API
         let api = APIManager()
-        api.loadData("https://itunes.apple.com/us/rss/topmusicvideos/limit-10/json",
-            completion: didLoadData)
+        api.loadData("https://itunes.apple.com/us/rss/topmusicvideos/limit-10/json", completion: didLoadData)
     }
 
     
     func didLoadData(videos: [Videos]) {
+        
+        print(reachabilityStatus)
+        
         //Set the Class level variable to be the incoming value
         self.videos = videos
 
