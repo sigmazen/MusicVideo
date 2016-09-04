@@ -11,18 +11,25 @@
 import UIKit
 
 class ViewController: UIViewController {
-    
+
     var videos = [Videos]()
+
+
+    @IBOutlet weak var displayLabel: UILabel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "reachabilityStatusChanged", name: "ReachabilityStatusChanged", object: nil)
+        
+        reachabilityStatusChanged()
 
         //Call API
         let api = APIManager()
         api.loadData("https://itunes.apple.com/us/rss/topmusicvideos/limit-10/json", completion: didLoadData)
     }
 
-    
+
     func didLoadData(videos: [Videos]) {
         
         print(reachabilityStatus)
@@ -39,7 +46,8 @@ class ViewController: UIViewController {
         writeOutVideos()
     
     }
-    
+
+
     func writeOutVideos() {
         //Since videos variable is declared at a Class level 
         //  and didLoadData is setting it, we can reference it
@@ -77,4 +85,26 @@ class ViewController: UIViewController {
 //        self.presentViewController(alert, animated: true, completion: nil)
 //    }
 
+    
+    func reachabilityStatusChanged() {
+        
+        switch reachabilityStatus {
+        case NOACCESS : view.backgroundColor = UIColor.redColor()
+            displayLabel.text = "No Internet"
+        case WIFI : view.backgroundColor = UIColor.greenColor()
+            displayLabel.text = "Reachable with WiFi"
+        case WWAN : view.backgroundColor = UIColor.yellowColor()
+            displayLabel.text = "Reachable with Cellular"
+        default : return
+        }
+        
+    }
+
+    
+    //Deinit will be called just as the object is about to be deallocated
+    deinit {
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: "ReachabilityStatusChanged", object: nil)
+    }
+    
+    
 }

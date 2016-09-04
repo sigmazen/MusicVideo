@@ -9,6 +9,7 @@
 import UIKit
 
 var reachability : Reachability?
+
 var reachabilityStatus = WIFI
 
 
