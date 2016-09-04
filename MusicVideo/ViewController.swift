@@ -19,9 +19,11 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+    
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "reachabilityStatusChanged", name: "ReachabilityStatusChanged", object: nil)
         
+        //Since observers wait for an event 'change' we need to force the event to do an initial check
+        //Once this has been done (in the AppDelegate) we need to change the status label
         reachabilityStatusChanged()
 
         //Call API

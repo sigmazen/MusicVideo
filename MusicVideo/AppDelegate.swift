@@ -10,7 +10,7 @@ import UIKit
 
 var reachability : Reachability?
 
-var reachabilityStatus = WIFI
+var reachabilityStatus = " "
 
 
 @UIApplicationMain
@@ -23,19 +23,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
 
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "reachabilityChanged:", name: kReachabilityChangedNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "reachabilityChangedByNotification:", name: kReachabilityChangedNotification, object: nil)
         
         internetCheck = Reachability.reachabilityForInternetConnection()
         internetCheck?.startNotifier()
         
+        //Since observers wait for an event 'change' we need to force the event to do an initial check
+        reachabilityChangedByReachability(internetCheck!)
+        
         return true
     }
+
     
-    func reachabilityChanged(notification: NSNotification) {
+    func reachabilityChangedByNotification(notification: NSNotification) {
 
+        //Cast Notification to Reachability
         reachability = notification.object as? Reachability
+        reachabilityChangedByReachability(reachability!)
+    }
+    
+    
 
-        let networkStatus: NetworkStatus = (reachability?.currentReachabilityStatus())!
+    func reachabilityChangedByReachability(currentReachabilityStatus: Reachability) {
+
+        let networkStatus: NetworkStatus = currentReachabilityStatus.currentReachabilityStatus()
         
         switch networkStatus.rawValue {
         case NotReachable.rawValue : reachabilityStatus = NOACCESS
